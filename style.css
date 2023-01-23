@@ -1,67 +1,135 @@
-*{
-    margin:0;
+* {
+    margin: 0;
     padding: 0;
 
 }
-#icon{
+
+#icon {
     filter: hue-rotate(100deg);
 }
-body{
+
+#loading {
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    top: 30%;
+
+}
+
+body {
     overflow-x: hidden;
-   height: 100vh;
+    height: 100vh;
+    width: 100%;
     background-image: url('./Imgs/sonic_1__green_hill__present__background_by_mtbvcdremixes_df1j81j-fullview.jpg');
     background-position: center;
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
     background-size: cover;
     overflow-y: hidden;
-   
 
 
-  } 
 
-#game{
+}
+
+
+
+.conteiner {
+
     width: 100%;
-    height: 200px ;
+
+    height: 100vh;
+}
+
+#titulo {
+    position: absolute;
+    top: -130%;
+    text-align: center;
+    font-size: 60pt;
+    transform: translateX(-50%);
+    left: 50%;
+
+
+
+
+}
+#titulo span{
+
+    animation: pisca 0.5s forwards alternate-reverse;
+
+    animation-delay: calc(var(--i) * 1s);
+
+
+}
+
+
+@keyframes pisca {
+
+
+    to{
+        color: rgb(255, 255, 255);  
+        transform: rotateZ(180deg);
+    }
+
+}
+
+
+
+
+#game {
+    width: 100%;
+    height: 200px;
     position: relative;
     bottom: -50%;
     display: flex;
-} 
-
-@keyframes personagem{
-
-    0%{top:90px}
-    30%{top: 20px;}
-    70%{top: 20px;}
-    100%{top:90px;}
-    
 }
 
-.animar{
+@keyframes personagem {
+
+    0% {
+        top: 90px
+    }
+
+    30% {
+        top: 20px;
+    }
+
+    70% {
+        top: 20px;
+    }
+
+    100% {
+        top: 90px;
+    }
+
+}
+
+.animar {
     animation: personagem 300ms infinite;
 }
 
-.andarDir{
+.andarDir {
     animation: dir 500ms infinite;
 }
 
 @keyframes dir {
-    0%{
+    0% {
         left: 0%;
 
     }
-    
-    100%{
+
+    100% {
 
         left: 40%;
     }
-    
+
 }
 
 
-#personagem{
+#personagem {
 
 
-    width: 30px;
+    width: 58px;
     height: 60px;
     position: relative;
     top: 85px;
@@ -71,31 +139,35 @@ body{
 
 
 
+
 }
-#personagem img{
-   
+
+#personagem img {
+
     filter: drop-shadow(5px 5px 1px black);
 
     width: 55px;
     height: 50px;
 
+
 }
 
-#quadrado{
-   
+#quadrado {
+
     position: relative;
-   
+
     top: 85px;
     left: 0px;
-    width: 55px;
+    width: 45px;
     height: 50px;
-    
 
 
 
-    
-    animation: quadrado 1s infinite linear;
+
+
+    animation: quadrado 2s infinite linear;
 }
+
 /*
    Imagem do Shadow
 */
@@ -103,69 +175,71 @@ body{
 
 
 #quadrado img {
- 
+
     transform: rotateY(180deg);
     filter: drop-shadow(5px 5px 1px black);
-   
+
 
 }
 
- #shadow{
- 
-   width: 55px;
-   height: 60px;
-   margin-bottom: 2%;
- }
-@keyframes quadrado{
+#shadow {
 
-   
-    0%{
-        left : 100%;
+    width: 58px;
+    height: 60px;
+
+    margin-bottom: 2%;
+}
+
+@keyframes quadrado {
+
+
+    0% {
+        left: 100%;
     }
 
-    100%{
-        left: -20%;  
-      }
+    100% {
+        left: -20%;
+    }
 
-    
+
 }
 
 
-#mapa{
+#mapa {
 
     width: 100%;
-    height: 10rem;
+    height: 11rem;
     position: absolute;
-    bottom: -1%;
+    bottom: 0%;
     z-index: -99;
-    
+
 
 }
 
 
-.cena{
-    animation: cea 10s infinite ;
+.cena {
+    animation: cea 10s infinite;
 }
 
-@keyframes cena{
+@keyframes cena {
 
-       
-       0%{
-           
+
+    0% {
+
         left: 0;
-          
-       }
+
+    }
 
 
-       100%{
-         left: -100%;
-       }
-      
-     
+    100% {
+        left: -100%;
+    }
+
+
 }
 
 
-H1{
+H1 {
     position: absolute;
     top: 5%;
     left: 5%;
@@ -173,9 +247,10 @@ H1{
     color: rgb(255, 255, 0);
     text-shadow: 5px 5px 0 black;
     font-weight: 400;
-    
+
 }
-h2{
+
+h2 {
     position: absolute;
     top: 13%;
     left: 5%;
@@ -188,7 +263,125 @@ h2{
     font-weight: 200;
 
 }
+
 @font-face {
     font-family: 'bits';
     src: url(./fontes/04B_30__.TTF);
+}
+
+h3 {
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    font-size: 12pt;
+    font-family: 'bits';
+    color: rgb(255, 255, 0);
+    text-shadow: 2px 2px 0 black;
+    font-weight: 200;
+    transform: translateX(-50%);
+    text-align: center;
+
+}
+
+
+#game_over {
+
+    text-align: center;
+    font-size: 4rem;
+    min-width: 20rem;
+    animation: game_over 0.45s 1s infinite linear;
+
+
+    transform: translateX(-50%);
+    left: 50%;
+    top: 30%;
+    margin: 0;
+
+
+
+}
+
+@keyframes game_over {
+
+    0% {}
+
+    50% {
+
+        top: 27%;
+    }
+
+    100% {}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.reset {
+    position: relative;
+    left: 50%;
+    top: 60%;
+    width: 40%;
+    transform: translateX(-50%);
+
+}
+
+div #reset {
+    background-color: yellow;
+    min-width: 40%;
+    height: 2.5rem;
+    border-radius: 5pt;
+    font-family: 'bits';
+    font-weight: 100;
+    letter-spacing: 2px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+
+
+}
+
+#start {
+    background-color: yellow;
+    height: 3.5rem;
+    border-radius: 5pt;
+    width: 10rem;
+    font-family: 'bits';
+    font-weight: 100;
+    position: absolute;
+    font-size: 12pt;
+    left: 50%;
+    top: -40%;
+    transform: translateX(-50%);
+    box-shadow: 2px 2px 1px black;
+
+}
+
+#start:hover {
+    cursor: pointer;
+    color: aliceblue;
+    text-shadow: 1px 2px 1px black,
+        1px 2px 1px black,
+        1px 2px 1px black,
+        1px 2px 1px black;
+
+
+
+}
+
+div #reset:hover {
+    cursor: pointer;
+    color: aliceblue;
+    text-shadow: 1px 2px 1px black;
+    position: absolute;
+
+
 }

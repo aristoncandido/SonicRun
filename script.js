@@ -14,7 +14,7 @@ let y = 10 ;
 var vel = 10;
 
 
-alert("Chegue ao outro lado sem COLIDIR")
+
 
 
 
@@ -23,7 +23,7 @@ document.addEventListener('keydown', function (e) {
    var tec = e.keyCode;
 
    setInterval(function(){
-      checkCollision(personagem,quadrado)
+      checkCollision(sprite,inimigo)
    },50)
    
    
@@ -77,7 +77,7 @@ function pular() {
       sprite.src = './Imgs/sonic-sonic-the-hedgehog.gif';
 
      
-         if (checkCollision(personagem, quadrado)) {
+         if (checkCollision(sprite,inimigo)) {
           
          }
          ponto();
@@ -96,9 +96,8 @@ function pular() {
 
 function colidir() {
         
-   alert("voce colidiu")
-
-   setTimeout(location.reload(),1000);
+ 
+   location.href ='GameOver.html'
 
 
 }
@@ -111,7 +110,7 @@ function Direita() {
    personagem.style.left = x + "px";
   
    
-   if (checkCollision(personagem, quadrado)) {
+   if (checkCollision(sprite,inimigo)) {
           
    }
    ponto();
@@ -132,7 +131,7 @@ function Esquerda() {
    personagem.style.left = x + "px";
 
    
-   if (checkCollision(personagem, quadrado)) {
+   if (checkCollision(sprite,inimigo)) {
           
    }
    ponto();
