@@ -1,0 +1,23 @@
+
+
+@media screen and (max-width:1000px ){
+  
+     
+    .botoes{
+        display: block;
+        width: 1rem;
+        height: 1rem;
+         
+    }
+    #mapa{
+        position: absolute;
+        transform: translateY(-15%);
+      
+        
+    }
+ 
+      
+
+
+    
+}
