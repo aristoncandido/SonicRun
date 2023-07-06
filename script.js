@@ -1,93 +1,67 @@
-
 let personagem = document.querySelector("#personagem");
-let quadrado = document.querySelector('#quadrado');
 let sprite = document.querySelector("#sprite");
 let game = document.querySelector('#game');
 let inimigo = document.querySelector('#shadow');
-let score= document.querySelector('h1');
+let score = document.querySelector('h1');
 
 let pontuar = 0;
-
-
-var  x = 10 ;
-let y = 10 ;
-var vel = 10;
-
-
-
-
-
+let x = 10;
+let y = 10;
+let vel = 10;
+let movimentoDireita = false;
+let movimentoEsquerda = false;
 
 document.addEventListener('keydown', function (e) {
+  var tec = e.keyCode;
 
-   var tec = e.keyCode;
+  if (tec == 32) {
+    pular();
+  } else if (tec == 39) {
+    movimentoDireita = true;
+    movimentoEsquerda = false;
+  } else if (tec == 37) {
+    movimentoEsquerda = true;
+    movimentoDireita = false;
+  }
+});
 
-   setInterval(function(){
-      checkCollision(sprite,inimigo)
-   },50)
-   
-   
- 
- 
+document.addEventListener('keyup', function (e) {
+  var tec = e.keyCode;
 
-   if (tec == 32) {
-      pular();
- 
+  if (tec == 39) {
+    movimentoDireita = false;
+  } else if (tec == 37) {
+    movimentoEsquerda = false;
+  }
+});
 
-   }
+setInterval(function () {
+  if (movimentoDireita) {
+    Direita();
+  } else if (movimentoEsquerda) {
+    Esquerda();
+  }
 
-   else if(tec == 39){
-       
-      Direita();
-      
-
-   }
-   else if(tec == 37){
-
-       Esquerda();
-      
-   }
-
-
-
-
-})
-
-
-
-
+  checkCollision(sprite, inimigo);
+}, 50);
 
 function pular() {
+  if (!personagem.classList.contains('animar')) {
+    personagem.classList.add('animar');
+  }
 
+  sprite.src = './Imgs/sonicball.gif';
 
-   if (personagem.classList != 'animar') {
-      personagem.classList.add('animar')
-   } // caso não tenha uma classe chamada Animar, ele vai adicionar!
+  setTimeout(function () {
+    personagem.classList.remove('animar');
+    sprite.src = './Imgs/sonic-sonic-the-hedgehog.gif';
 
+    if (checkCollision(sprite, inimigo)) {
+      colidir();
+    }
 
-   sprite.src = './Imgs/sonicball.gif';
-
-
-
-
-   setTimeout(function () {
-
-      personagem.classList.remove('animar');
-
-      sprite.src = './Imgs/sonic-sonic-the-hedgehog.gif';
-
-     
-         if (checkCollision(sprite,inimigo)) {
-          
-         }
-         ponto();
-     
-
-
-
-   }, 300)
-
-
+    ponto();
+  }, 300);
 
 
 
@@ -95,81 +69,47 @@ function pular() {
 }
 
 function colidir() {
-        
- 
-   location.href ='GameOver.html'
-
-
+  location.href = 'GameOver.html';
 }
 
 function Direita() {
- 
-   
-   x = x+10;
+  x += 10;
+  personagem.style.left = x + "px";
 
-   personagem.style.left = x + "px";
-  
-   
-   if (checkCollision(sprite,inimigo)) {
-          
-   }
-   ponto();
+  if (checkCollision(sprite, inimigo)) {
+    colidir();
+  }
 
-   
-
-
-
-  
-
+  ponto();
 }
 
 function Esquerda() {
- 
-   
-   x = x-10;
+  x -= 10;
+  personagem.style.left = x + "px";
 
-   personagem.style.left = x + "px";
+  if (checkCollision(sprite, inimigo)) {
+    colidir();
+  }
 
-   
-   if (checkCollision(sprite,inimigo)) {
-          
-   }
-   ponto();
-
-
-
-
-
-
-  
-
+  ponto();
 }
 
-function ponto(){
-   
-    pontuar++;
-    score.innerHTML = "SCORE:" + pontuar; 
-
- 
+function ponto() {
+  pontuar++;
+  score.innerHTML = "SCORE:" + pontuar;
 }
 
 function checkCollision(obj1, obj2) {
-   var rect1 = obj1.getBoundingClientRect();
-   var rect2 = obj2.getBoundingClientRect();
- 
-   if (rect1.left < rect2.left + rect2.width &&
-     rect1.left + rect1.width > rect2.left &&
-     rect1.top < rect2.top + rect2.height &&
-     rect1.height + rect1.top > rect2.top) {
+  var rect1 = obj1.getBoundingClientRect();
+  var rect2 = obj2.getBoundingClientRect();
 
+  if (rect1.left < rect2.left + rect2.width &&
+      rect1.left + rect1.width > rect2.left &&
+      rect1.top < rect2.top + rect2.height &&
+      rect1.height + rect1.top > rect2.top) {
+    colidir();
+    return true;
+  }
 
-      colidir()
-
-
-
-   } else{
-      
-   
-   }
-
- }
+  return false;
+}

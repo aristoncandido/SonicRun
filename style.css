@@ -139,11 +139,11 @@ body {
     }
 
     30% {
-        top: 20px;
+        top: -40px;
     }
 
     70% {
-        top: 20px;
+        top: -40px;
     }
 
     100% {
@@ -175,40 +175,39 @@ body {
 
 
 #personagem {
-
-
     width: 58px;
     height: 60px;
-    position: relative;
-    top: 85px;
+    position: absolute;
+    top: 11vh; /* Posição vertical relativa à altura da janela */
     transition: 0.3s;
-
-
-
-
-
-
-}
-
+ 
+  }
 #personagem img {
 
     filter: drop-shadow(5px 5px 1px black);
 
-    width: 55px;
-    height: 50px;
-
+  /*   width: 55px;
+    height: 50px; */
+    width: 100%;
+    height: 100%;
+    
 
 }
 
 #quadrado {
 
-    position: relative;
-
-    top: 85px;
+    position: absolute;
+ 
+    top: 40px;
     left: 0px;
-    width: 45px;
-    height: 50px;
 
+
+
+    
+
+/*     width: 45px;
+    height: 50px;
+ */
 
 
 
@@ -224,18 +223,20 @@ body {
 
 #quadrado img {
 
-    transform: rotateY(180deg);
-    filter: drop-shadow(5px 5px 1px black);
 
+    filter: drop-shadow(5px 5px 1px black);
+     width: 5rem;
+     height: 5rem;
 
 }
 
 #shadow {
 
-    width: 58px;
-    height: 60px;
-
-    margin-bottom: 2%;
+    width: 25px;
+    height: 25px;
+ 
+    margin-bottom: 0%;
+    top:6vh;
 }
 
 @keyframes quadrado {
@@ -432,4 +433,10 @@ div #reset:hover {
     position: absolute;
 
 
+}
+
+#mapa{
+    position: absolute;
+    bottom: 0.5%;
+    height: 30%;
 }
