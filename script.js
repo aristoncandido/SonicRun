@@ -73,7 +73,7 @@ function colidir() {
 }
 
 function Direita() {
-  x += 10;
+  x += 15;
   personagem.style.left = x + "px";
 
   if (checkCollision(sprite, inimigo)) {
@@ -84,7 +84,7 @@ function Direita() {
 }
 
 function Esquerda() {
-  x -= 10;
+  x -= 20;
   personagem.style.left = x + "px";
 
   if (checkCollision(sprite, inimigo)) {
